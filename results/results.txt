@@ -1,0 +1,206 @@
+
+======================================================================
+1. LOADING
+======================================================================
+Loaded responses.csv   Raw responses: 202
+
+======================================================================
+2. SCREENING
+======================================================================
+  removed - no consent                 3
+  removed - incomplete                 0
+  removed - straight-lining            16
+  removed - no social media use        0
+Valid cases: 183
+
+SENTENCE FOR THE PAPER:
+"Of 202 responses received, 3 no consent, 16 straight-lining, leaving 183 valid cases."
+
+======================================================================
+3. DERIVED VARIABLES
+======================================================================
+Human: 117   AI: 66
+Manipulation check passed: 50.8%
+ACB_BIN split - 0: 39.3%   1: 60.7%
+
+======================================================================
+4. RELIABILITY
+======================================================================
+Construct  Mean   SD  Alpha  OK
+       PA  3.30 1.03  0.788 Yes
+       PE  3.36 0.95  0.739 Yes
+       PT  3.23 0.92  0.713 Yes
+       MP  3.32 0.94  0.765 Yes
+       SC  3.17 1.07  0.840 Yes
+       DS  3.48 0.95  0.744 Yes
+      AIL  3.42 0.94  0.770 Yes
+       CT  3.45 0.97  0.796 Yes
+      ACB  3.44 0.94  0.740 Yes
+     NWOM  3.43 1.00  0.776 Yes
+
+======================================================================
+4b. ATTENTION CHECK DIAGNOSTIC (reported, not used for exclusion)
+======================================================================
+  AC1 pass rate : 21.3%   mean response 3.43
+  AC2 pass rate : 31.1%   mean response 3.74
+  Random responding would give a mean near 3.00 and a flat distribution.
+  Centred means plus acceptable alphas indicate the items failed, not the
+  participants. This goes in Section III-E as a measurement limitation.
+
+======================================================================
+5. COMMON METHOD BIAS (Harman)
+======================================================================
+First factor explains 47.3% of variance
+Below 50%% means common method bias is unlikely to explain the results.
+
+======================================================================
+6. DESCRIPTIVES AND GROUP BALANCE
+======================================================================
+               Mean     SD   Min    Max
+AGE           23.03   3.76  18.0   60.0
+SM_HOURS       5.76   3.00   1.0   23.0
+EXP_FREQ_NUM   3.81   3.11   0.0   12.0
+PA             3.30   1.03   1.0    5.0
+PE             3.36   0.95   1.0    5.0
+PT             3.23   0.92   1.0    5.0
+MP             3.32   0.94   1.0    5.0
+SC             3.17   1.07   1.0    5.0
+DS             3.48   0.95   1.0    5.0
+AIL            3.42   0.94   1.0    5.0
+CT             3.45   0.97   1.0    5.0
+ACB            3.44   0.94   1.0    5.0
+NWOM           3.43   1.00   1.0    5.0
+CT_100        61.16  24.22   0.0  100.0
+PIR           44.81  24.24   0.0   90.0
+
+Group balance (should NOT be significant):
+  AGE          p = 0.625
+  SM_HOURS     p = 0.031  <-- IMBALANCED
+  GENDER       p = 0.260
+  EDU          p = 0.814
+  OCC          p = 0.057
+
+======================================================================
+7. HYPOTHESIS TESTS
+======================================================================
+H1 - consumer trust by condition (Welch t-test)
+  Human  M=60.40 SD=24.10 n=117
+  AI     M=62.50 SD=24.56 n=66
+  t(132.82) = -0.560, p = 0.5767, d = -0.087, 95% CI [-9.53, 5.33]
+  H1 NOT SUPPORTED
+  A null result is publishable here - use Discussion VERSION B.
+
+Condition x anti-consumption: chi2(1) = 0.214, p = 0.6438
+
+H2 / H3 - correlations with consumer trust:
+   Predictor      r      p sig
+         AIL  0.720 0.0000 ***
+          MP  0.717 0.0000 ***
+          PT  0.709 0.0000 ***
+          DS  0.687 0.0000 ***
+          PA  0.680 0.0000 ***
+          PE  0.679 0.0000 ***
+          SC  0.569 0.0000 ***
+    SM_HOURS  0.228 0.0019  **
+         AGE -0.151 0.0413   *
+EXP_FREQ_NUM -0.021 0.7815    
+
+H4 - trust vs anti-consumption: r = 0.657, p = 0.0000
+
+======================================================================
+8. FEATURES AND VIF
+======================================================================
+Predictors: 12   Observations: 183   Ratio: 15.2
+    Variable  VIF
+          PT 4.14
+          MP 4.03
+          PA 4.00
+          PE 3.67
+          DS 3.43
+         AIL 3.40
+          SC 2.18
+    SM_HOURS 1.25
+    GENDER_M 1.13
+CONTENT_TYPE 1.11
+         AGE 1.07
+    EXP_FREQ 1.06
+
+======================================================================
+9. REGRESSION - consumer trust
+======================================================================
+            Model  CV R2  CV SD  Test R2   RMSE    MAE
+ Ridge Regression  0.578  0.041    0.655 15.858 13.237
+Linear Regression  0.576  0.041    0.655 15.873 13.240
+    Random Forest  0.570  0.085    0.688 15.097 12.422
+              SVR  0.539  0.041    0.609 16.900 13.623
+
+======================================================================
+10. CLASSIFICATION - anti-consumption
+======================================================================
+              Model  CV AUC  CV SD  Accuracy  Precision  Recall  Specificity    F1  Test AUC
+Logistic Regression   0.879  0.046     0.892      0.875   0.955        0.800 0.913     0.970
+      Random Forest   0.879  0.071     0.892      0.875   0.955        0.800 0.913     0.932
+               k-NN   0.828  0.056     0.838      0.833   0.909        0.733 0.870     0.906
+                SVM   0.819  0.055     0.811      0.800   0.909        0.667 0.851     0.858
+      Decision Tree   0.804  0.055     0.865      0.870   0.909        0.800 0.889     0.858
+
+======================================================================
+11. FEATURE IMPORTANCE
+======================================================================
+     Feature  Importance
+          MP      0.2496
+         AIL      0.1926
+          PA      0.1464
+          DS      0.1385
+          PE      0.0716
+          PT      0.0582
+          SC      0.0456
+         AGE      0.0354
+    SM_HOURS      0.0287
+    EXP_FREQ      0.0232
+    GENDER_M      0.0062
+CONTENT_TYPE      0.0040
+
+H5 - importance by condition:
+  Human (n=117) top 5: PA, DS, PE, AIL, SM_HOURS
+  AI (n=66) top 5: MP, SC, DS, AIL, PT
+
+======================================================================
+12. FIGURES (IEEE single-column, 300 dpi)
+======================================================================
+Saved fig1_trust.png, fig2_roc.png, fig3_importance.png
+All three are 3.5 inches wide at 300 dpi and readable in black and white.
+
+======================================================================
+13. TABLES READY TO PASTE
+======================================================================
+TABLE I.  DESCRIPTIVE STATISTICS AND RELIABILITY
+Construct	Items	Mean	SD	Alpha
+Perceived authenticity	3	3.30	1.03	0.788
+Perceived expertise	3	3.36	0.95	0.739
+Perceived transparency	3	3.23	0.92	0.713
+Message persuasiveness	3	3.32	0.94	0.765
+Source credibility	3	3.17	1.07	0.840
+Dispositional skepticism	3	3.48	0.95	0.744
+AI literacy	3	3.42	0.94	0.770
+Consumer trust	3	3.45	0.97	0.796
+Anti-consumption	3	3.44	0.94	0.740
+Negative word-of-mouth	3	3.43	1.00	0.776
+
+TABLE II.  REGRESSION PERFORMANCE - CONSUMER TRUST
+Model	CV R2	CV SD	Test R2	RMSE	MAE
+Ridge Regression	0.578	0.041	0.655	15.858	13.237
+Linear Regression	0.576	0.041	0.655	15.873	13.240
+Random Forest	0.570	0.085	0.688	15.097	12.422
+SVR	0.539	0.041	0.609	16.900	13.623
+
+TABLE III.  CLASSIFICATION PERFORMANCE - ANTI-CONSUMPTION
+Model	CV AUC	Accuracy	Precision	Recall	Specificity	F1
+Logistic Regression	0.879	0.892	0.875	0.955	0.800	0.913
+Random Forest	0.879	0.892	0.875	0.955	0.800	0.913
+k-NN	0.828	0.838	0.833	0.909	0.733	0.870
+SVM	0.819	0.811	0.800	0.909	0.667	0.851
+Decision Tree	0.804	0.865	0.870	0.909	0.800	0.889
+
+Saved to output/TABLES.txt - columns are tab separated, so pasting into
+Word and using Insert > Table > Convert Text to Table builds the table.
